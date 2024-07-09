@@ -219,6 +219,7 @@ namespace yt_dlp_gui.Views {
             public string ExecText { get; set; } = string.Empty;
             public UseCookie UseCookie { get; set; } = UseCookie.WhenNeeded;
             public CookieType CookieType { get; set; } = CookieType.Chrome;
+            public string CustomCookieFilePath { get; set; } = string.Empty;
             public bool UseNotifications { get; set; } = true;
             public bool UseAria2 { get; set; } = true;
             public bool NeedCookie { get; set; } = false;

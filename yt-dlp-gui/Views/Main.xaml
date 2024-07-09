@@ -628,26 +628,36 @@
                                          Margin="0,2" EnableHyperlinks="False"/>
                 </Grid>
                 <!--UseCookie-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_ -->
-                <TextBlock Grid.Row="2" Text="{Binding Source={x:Static app:App.Lang}, Path=Main.Cookie}" VerticalAlignment="Center" HorizontalAlignment="Right"/>
-                <StackPanel Grid.Row="2" Grid.Column="2" Orientation="Horizontal" VerticalAlignment="Top" Margin="0,2">
-                    <ComboBox SelectedValue="{Binding UseCookie}" SelectedValuePath="Tag" IsEnabled="{Binding Enable.UseCookie}">
-                        <ComboBoxItem Content="{Binding Source={x:Static app:App.Lang}, Path=Main.CookieWhenNeeded}" Tag="{x:Static m:UseCookie.WhenNeeded}"/>
-                        <ComboBoxItem Content="{Binding Source={x:Static app:App.Lang}, Path=Main.CookieNever}" Tag="{x:Static m:UseCookie.Never}"/>
-                        <ComboBoxItem Content="{Binding Source={x:Static app:App.Lang}, Path=Main.CookieAlways}" Tag="{x:Static m:UseCookie.Always}"/>
-                        <ComboBoxItem Content="{Binding Source={x:Static app:App.Lang}, Path=Main.CookieAsk}" Tag="{x:Static m:UseCookie.Ask}"/>
-                    </ComboBox>
-                    <TextBlock Text="{Binding Source={x:Static app:App.Lang}, Path=Main.CookieUse}" Margin="4,0" VerticalAlignment="Center"/>
-                    <ComboBox SelectedValue="{Binding CookieType}" SelectedValuePath="Tag" IsEnabled="{Binding Enable.CookieType}">
-                        <ComboBoxItem Content="Chrome" Tag="{x:Static m:CookieType.Chrome}"/>
-                        <ComboBoxItem Content="Edge" Tag="{x:Static m:CookieType.Edge}"/>
-                        <ComboBoxItem Content="Firefox" Tag="{x:Static m:CookieType.Firefox}"/>
-                        <ComboBoxItem Content="Opera" Tag="{x:Static m:CookieType.Opera}"/>
-                        <ComboBoxItem Content="Vivaldi" Tag="{x:Static m:CookieType.Vivaldi}"/>
-                        <Separator/>
-                        <ComboBoxItem Content="Chromium" Tag="{x:Static m:CookieType.Chromium}"/>
-                        <ComboBoxItem Content="Chrome Beta" Tag="{x:Static m:CookieType.Chrome_Beta}"/>
-                    </ComboBox>
-                </StackPanel>
+                <TextBlock Grid.Row="2" Text="{Binding Source={x:Static app:App.Lang}, Path=Main.Cookie}" Margin="0,2" VerticalAlignment="Top" HorizontalAlignment="Right"/>
+                <Grid Grid.Row="2" Grid.Column="2" VerticalAlignment="Top">
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <StackPanel Grid.Row="0" Grid.Column="2" Orientation="Horizontal" VerticalAlignment="Top" Margin="0,2">
+                        <ComboBox SelectedValue="{Binding UseCookie}" SelectedValuePath="Tag" IsEnabled="{Binding Enable.UseCookie}">
+                            <ComboBoxItem Content="{Binding Source={x:Static app:App.Lang}, Path=Main.CookieWhenNeeded}" Tag="{x:Static m:UseCookie.WhenNeeded}"/>
+                            <ComboBoxItem Content="{Binding Source={x:Static app:App.Lang}, Path=Main.CookieNever}" Tag="{x:Static m:UseCookie.Never}"/>
+                            <ComboBoxItem Content="{Binding Source={x:Static app:App.Lang}, Path=Main.CookieAlways}" Tag="{x:Static m:UseCookie.Always}"/>
+                            <ComboBoxItem Content="{Binding Source={x:Static app:App.Lang}, Path=Main.CookieAsk}" Tag="{x:Static m:UseCookie.Ask}"/>
+                        </ComboBox>
+                        <TextBlock Text="{Binding Source={x:Static app:App.Lang}, Path=Main.CookieUse}" Margin="4,0" VerticalAlignment="Center"/>
+                        <ComboBox SelectedValue="{Binding CookieType}" SelectedValuePath="Tag" IsEnabled="{Binding Enable.CookieType}">
+                            <ComboBoxItem Content="Chrome" Tag="{x:Static m:CookieType.Chrome}"/>
+                            <ComboBoxItem Content="Edge" Tag="{x:Static m:CookieType.Edge}"/>
+                            <ComboBoxItem Content="Firefox" Tag="{x:Static m:CookieType.Firefox}"/>
+                            <ComboBoxItem Content="Opera" Tag="{x:Static m:CookieType.Opera}"/>
+                            <ComboBoxItem Content="Vivaldi" Tag="{x:Static m:CookieType.Vivaldi}"/>
+                            <Separator/>
+                            <ComboBoxItem Content="Chromium" Tag="{x:Static m:CookieType.Chromium}"/>
+                            <ComboBoxItem Content="Chrome Beta" Tag="{x:Static m:CookieType.Chrome_Beta}"/>
+                            <Separator/>
+                            <ComboBoxItem Content="Custom File" Tag="{x:Static m:CookieType.CustomFile}"/>
+                        </ComboBox>
+                    </StackPanel>
+                    <controls:TextEditor Grid.Row="1" Helper="{Binding Source={x:Static app:App.Lang}, Path=Main.CookiePath}" Text="{Binding CustomCookieFilePath}" 
+                                         Margin="0,2" EnableHyperlinks="False"/>
+                </Grid>
                 <!--UseAria2-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_ -->
                 <TextBlock Grid.Row="3" Text="{Binding Source={x:Static app:App.Lang}, Path=Main.Aria2}" VerticalAlignment="Center" HorizontalAlignment="Right"/>
                 <CheckBox Grid.Row="3" Grid.Column="2" Content="{Binding Source={x:Static app:App.Lang}, Path=Main.Aria2Enabled}" IsEnabled="{Binding Enable.UseAria2}" IsChecked="{Binding UseAria2}" Margin="0,2"/>

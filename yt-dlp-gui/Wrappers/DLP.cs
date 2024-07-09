@@ -187,6 +187,11 @@ namespace yt_dlp_gui.Wrappers {
             }
             return this;
         }
+        public DLP Cookie(string cookie_file_path)
+        {
+            Options["--cookies"] = cookie_file_path;
+            return this;
+        }
         private string Args {
             get {
                 var args = Options.Select(x => {

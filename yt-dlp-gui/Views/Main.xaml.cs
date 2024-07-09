@@ -254,11 +254,15 @@ namespace yt_dlp_gui.Views {
 
             if (needcheck) {
                 var releaseData = await Web.GetLastTag();
-                var last = releaseData.FirstOrDefault();
-                if (last != null) {
-                    Data.ReleaseData = releaseData;
-                    Data.LastVersion = last.tag_name;
-                    Data.LastCheckUpdate = currentDate;
+                if (releaseData != null)
+                {
+                    var last = releaseData.FirstOrDefault();
+                    if (last != null)
+                    {
+                        Data.ReleaseData = releaseData;
+                        Data.LastVersion = last.tag_name;
+                        Data.LastCheckUpdate = currentDate;
+                    }
                 }
             }
             if (string.Compare(App.CurrentVersion, Data.LastVersion) < 0) {
@@ -293,7 +297,13 @@ namespace yt_dlp_gui.Views {
         private void GetInfo() {
             //Analyze
             var dlp = new DLP(Data.Url);
-            if (Data.NeedCookie) dlp.Cookie(Data.CookieType);
+            if (Data.NeedCookie) {
+                if (Data.CookieType != CookieType.CustomFile) {
+                    dlp.Cookie(Data.CookieType);
+                } else {
+                    dlp.Cookie(Data.CustomCookieFilePath);
+                }
+            }
             dlp.Proxy(Data.ProxyUrl, Data.ProxyEnabled);
             dlp.GetInfo();
             if (!string.IsNullOrWhiteSpace(Data.selectedConfig.file)) {
